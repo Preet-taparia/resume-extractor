@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume Extractor</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            font-family: Arial, sans-serif;
+        }
+
+        .navbar {
+            background-color: #343a40;
+            color: #ffffff;
+        }
+
+        .container {
+            padding-top: 20px;
+        }
+
+        #formFileMultiple {
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            padding: 10px;
+        }
+
+        #submitButton {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+    <div class="container">
+        <span class="navbar-brand">Resume Extractor</span>
+    </div>
+</nav>
+
+<div class="container mt-1">
+    <form action="/upload" method="post" enctype="multipart/form-data" id="uploadForm">
+        <div class="mb-1">
+            <label for="formFileMultiple" class="form-label">Upload Files (PDF, DOC, DOCX only)</label>
+            <input class="form-control" type="file" id="formFileMultiple" name="file" accept=".pdf,.doc,.docx" multiple>
+        </div>
+        <button type="button" class="btn btn-primary" id="submitButton" disabled>Submit</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById('formFileMultiple').addEventListener('change', function() {
+        var fileInput = document.getElementById('formFileMultiple');
+        var submitButton = document.getElementById('submitButton');
+        if (fileInput.files.length > 0) {
+            submitButton.removeAttribute('disabled');
+        } else {
+            submitButton.setAttribute('disabled', 'disabled');
+        }
+    });
+
+    document.getElementById('submitButton').addEventListener('click', function() {
+        document.getElementById('uploadForm').submit();
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script>
+</body>
+</html>
